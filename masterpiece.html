@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The queen | Afnan Fathima</title>
+<meta name="theme-color" content="#7A1FA8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Figtree:wght@400;500;600;700&family=Great+Vibes&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="pg-master">
+  <div class="floaters" id="petals" aria-hidden="true"></div>
+  <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+  <canvas id="fw" aria-hidden="true"></canvas>
+
+  <button class="reveal-gate" id="gate" type="button">
+    <span class="crown-big" aria-hidden="true"><svg class="ic"><use href="#i-crown"/></svg></span>
+    <strong>Tap to reveal</strong>
+    <span>Turn your sound on</span>
+  </button>
+
+  <a class="pill pill-back" href="home.html"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg>Home</a>
+  <button class="pill pill-music" id="music" type="button" aria-pressed="false">
+    <svg class="ic" aria-hidden="true"><use href="#i-music"/></svg><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span class="lbl">Play music</span>
+  </button>
+
+  <main class="stage">
+    <div class="card-zone">
+      <div class="halo" aria-hidden="true"><div class="halo-spin"></div></div>
+      <div class="levitate">
+        <div class="mcardx">
+          <div class="inner">
+            <img src="media/p/p15.jpeg" width="1280" height="1600" alt="Afnan Fathima, the masterpiece" decoding="async">
+            <span class="sheen" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="m-title">
+      <div class="crown" aria-hidden="true"><svg class="ic"><use href="#i-crown"/></svg></div>
+      <p class="script">Happy Birthday</p>
+      <h1 id="name">AFNAN FATHIMA</h1>
+    </div>
+
+    <div class="btn-row m-actions">
+      <button class="btn btn-sun" id="sky" type="button"><svg class="ic" aria-hidden="true"><use href="#i-sparkles"/></svg>Light up the sky</button>
+      <a class="btn btn-ghost" href="home.html"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg>Back to the beginning</a>
+    </div>
+  </main>
+
+<script src="assets/app.js"></script>
+<script>
+(function(){
+  const $ = App.$;
+  App.letters($('#name'), { text: 'AFNAN FATHIMA', colors: ['#FFE27A', '#FF9FC8', '#7FF0DF', '#FFFFFF', '#FFB27A', '#D6C8FF'] });
+  App.floaters($('#petals'), { count: 14, seed: 41, shapes: ['heart', 'dot', 'star', 'heart', 'ring'], colors: ['#FF9FC8', '#FFE27A', '#FFFFFF', '#FFB27A', '#C9B6FF'], opacity: .55 });
+
+  /* a few floating memory bubbles (CSS only, transform animation) */
+  const pics = ['media/1.jpeg', 'media/2.jpeg', 'media/3.jpeg', 'media/4.jpeg'], r = App.rng(77), box = $('#bubbles');
+  const n = innerWidth < 600 ? 6 : 10;
+  for (let i = 0; i < n; i++){
+    const b = document.createElement('span'); b.className = 'bubble';
+    b.style.cssText = 'background-image:url(' + pics[i % pics.length] + ');--x:' + (4 + r() * 88).toFixed(1) + '%;--s:' + (28 + r() * 34).toFixed(0) + 'px;--dur:' + (12 + r() * 10).toFixed(1) + 's;--delay:' + (-r() * 20).toFixed(1) + 's;--dx:' + ((r() - .5) * 120).toFixed(0) + 'px';
+    box.appendChild(b);
+  }
+
+  const music = App.music($('#music'), 'media/finding-her.mp3', { volume: .6 });
+  const boom = new Audio('media/fireworks.mp3'); boom.preload = 'auto'; boom.volume = .5;
+  const fw = App.fireworks($('#fw'));
+  let started = false;
+
+  $('#gate').addEventListener('click', () => {
+    if (started) return; started = true;
+    document.body.classList.add('started');
+    music.play();
+    setTimeout(() => { boom.currentTime = 0; boom.play().catch(() => {}); fw.volley(7); fw.setAuto(true); }, 1300);
+    setTimeout(() => App.confetti.cannon(['#FFE27A', '#FF9FC8', '#7FF0DF', '#FFFFFF', '#FFB27A', '#D6C8FF']), 2100);
+    setTimeout(() => $('#sky').focus({ preventScroll: true }), 3000);
+  });
+  $('#sky').addEventListener('click', () => { fw.volley(8); boom.currentTime = 0; boom.play().catch(() => {}); });
+  document.addEventListener('visibilitychange', () => { if (started) fw.setAuto(!document.hidden); });
+})();
+</script>
+</body>
+</html>

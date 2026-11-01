@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>An invitation for Afnan Fathima</title>
+<meta name="description" content="A birthday invitation for Afnan Fathima.">
+<meta name="theme-color" content="#FF4F7A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Figtree:wght@400;500;600;700&family=Great+Vibes&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="prefetch" href="home.html">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="pg-invite">
+  <div class="floaters" id="floaters" aria-hidden="true"></div>
+
+  <main class="invite">
+    <div class="invite-card" id="card">
+      <span class="corner c-tl" aria-hidden="true"></span>
+      <span class="corner c-tr" aria-hidden="true"></span>
+      <span class="corner c-bl" aria-hidden="true"></span>
+      <span class="corner c-br" aria-hidden="true"></span>
+
+      <div class="state state-seal">
+        <button class="seal" id="seal" type="button" aria-label="Open the invitation">
+          <svg class="ic" aria-hidden="true"><use href="#i-gift"/></svg>
+        </button>
+        <p class="seal-title">Tap to open</p>
+        <p class="seal-sub">A little invitation, just for you</p>
+      </div>
+
+      <div class="state state-open" id="openState" aria-hidden="true">
+        <p class="inv-label">An invitation for</p>
+        <h1 class="inv-name" id="invName">Afnan<br>Fathima</h1>
+        <p class="script inv-script">The stars have aligned.</p>
+        <p class="inv-text">Your timeline awaits.<br>Proceed to the celebration.</p>
+        <a class="btn btn-pink" id="enter" href="home.html" tabindex="-1">Enter the celebration
+          <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+<script src="assets/app.js"></script>
+<script>
+(function(){
+  const card = App.$('#card'), name = App.$('#invName'), openState = App.$('#openState'), enter = App.$('#enter');
+  App.floaters(App.$('#floaters'), { count: 16, colors: ['#FFFFFF', '#FFE27A', '#7C4DFF', '#12B8A6', '#FFFFFF', '#FFD6E7'], seed: 5, min: 16, max: 54 });
+  App.letters(name, { text: 'Afnan|Fathima' });
+
+  App.$('#seal').addEventListener('click', () => {
+    card.classList.add('opened');
+    name.classList.add('pop'); name.style.setProperty('--start', '.35s');
+    openState.setAttribute('aria-hidden', 'false'); enter.removeAttribute('tabindex');
+    const r = card.getBoundingClientRect();
+    App.sfx.chime();
+    setTimeout(() => App.confetti.burst(r.left + r.width / 2, r.top + r.height * .35, 150), 180);
+    setTimeout(() => enter.focus({ preventScroll: true }), 700);
+  });
+
+  enter.addEventListener('click', e => {
+    if (App.RM) return;
+    e.preventDefault();
+    card.classList.add('leaving');
+    setTimeout(() => { location.href = enter.href; }, 420);
+  });
+
+  /* gentle tilt that follows the mouse (desktop only, once per frame) */
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !App.RM){
+    let tx = 0, ty = 0, queued = false;
+    addEventListener('pointermove', e => {
+      tx = (innerWidth / 2 - e.clientX) / innerWidth * 14; ty = (e.clientY - innerHeight / 2) / innerHeight * 14;
+      if (!queued){ queued = true; requestAnimationFrame(() => { queued = false; if (!card.classList.contains('leaving')) card.style.transform = 'rotateY(' + tx.toFixed(2) + 'deg) rotateX(' + ty.toFixed(2) + 'deg)'; }); }
+    }, { passive: true });
+  }
+  window.addEventListener('pageshow', e => { if (e.persisted) card.classList.remove('leaving'); });
+})();
+</script>
+</body>
+</html>

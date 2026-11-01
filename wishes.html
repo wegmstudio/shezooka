@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Echoes of love | Afnan Fathima's birthday wishes</title>
+<meta name="theme-color" content="#8A42F6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Figtree:wght@400;500;600;700&family=Great+Vibes&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body class="pg-wish">
+
+  <a class="pill pill-back" href="home.html#wishes"><svg class="ic" aria-hidden="true"><use href="#i-arrow-left"/></svg>Return home</a>
+
+  <header class="w-hero">
+    <div class="floaters" id="hearts" aria-hidden="true"></div>
+    <div>
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>18 March 2026</span>
+      <h1>Echoes of <span class="script">love</span></h1>
+      <p class="for">For Afnan Fathima, from the hearts that adore you</p>
+    </div>
+    <a class="scroll-cue" href="#wishList">Scroll for wishes<svg class="ic" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+  </header>
+
+  <section class="section" id="wishList">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Messages from the heart</h2>
+        <p class="sub">Tap any wish to watch it with sound. They play one after another.</p>
+      </div>
+      <div class="wgrid">
+        <button class="vtile reveal" type="button" data-group="wishes" data-video="media/videos/h4.mp4" data-ratio="0.554" data-title="A little voice">
+          <video data-src="media/videos/h4.mp4" data-auto muted loop playsinline></video><span class="shade"></span>
+          <span class="play" aria-hidden="true"><svg class="ic"><use href="#i-play"/></svg></span>
+          <span class="meta"><small>A little voice</small><strong>A little voice</strong></span>
+        </button>
+        <button class="vtile reveal" type="button" style="--d:.05s" data-group="wishes" data-video="media/videos/h2.mp4" data-ratio="0.554" data-title="A sweet wish">
+          <video data-src="media/videos/h2.mp4" data-auto muted loop playsinline></video><span class="shade"></span>
+          <span class="play" aria-hidden="true"><svg class="ic"><use href="#i-play"/></svg></span>
+          <span class="meta"><small>From a stranger</small><strong>A sweet wish</strong></span>
+        </button>
+        <button class="vtile reveal" type="button" style="--d:.1s" data-group="wishes" data-video="media/videos/h1.mp4" data-ratio="0.554" data-title="Carrying a wish">
+          <video data-src="media/videos/h1.mp4" data-auto muted loop playsinline></video><span class="shade"></span>
+          <span class="play" aria-hidden="true"><svg class="ic"><use href="#i-play"/></svg></span>
+          <span class="meta"><small>A random smile</small><strong>Carrying a wish</strong></span>
+        </button>
+        <button class="vtile reveal" type="button" style="--d:.15s" data-group="wishes" data-video="media/videos/h5.mp4" data-ratio="0.562" data-title="Wishing you joy">
+          <video data-src="media/videos/h5.mp4" data-auto muted loop playsinline></video><span class="shade"></span>
+          <span class="play" aria-hidden="true"><svg class="ic"><use href="#i-play"/></svg></span>
+          <span class="meta"><small>Someone out there</small><strong>Wishing you joy</strong></span>
+        </button>
+        <button class="vtile reveal" type="button" data-group="wishes" data-video="media/videos/h6.mp4" data-ratio="0.562" data-title="Big smiles">
+          <video data-src="media/videos/h6.mp4" data-auto muted loop playsinline></video><span class="shade"></span>
+          <span class="play" aria-hidden="true"><svg class="ic"><use href="#i-play"/></svg></span>
+          <span class="meta"><small>A small moment</small><strong>Big smiles</strong></span>
+        </button>
+        <button class="vtile reveal" type="button" style="--d:.05s" data-group="wishes" data-video="media/videos/h7.mp4" data-ratio="0.562" data-title="Not quite a stranger">
+          <video data-src="media/videos/h7.mp4" data-auto muted loop playsinline></video><span class="shade"></span>
+          <span class="play" aria-hidden="true"><svg class="ic"><use href="#i-play"/></svg></span>
+          <span class="meta"><small>A shared silence</small><strong>Not quite a stranger</strong></span>
+        </button>
+        <button class="vtile reveal" type="button" style="--d:.1s" data-group="wishes" data-video="media/videos/h3.mp4" data-ratio="0.554" data-title="Just for you">
+          <video data-src="media/videos/h3.mp4" data-auto muted loop playsinline></video><span class="shade"></span>
+          <span class="play" aria-hidden="true"><svg class="ic"><use href="#i-play"/></svg></span>
+          <span class="meta"><small>An unexpected wish</small><strong>Just for you</strong></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-end">
+    <a class="next" href="gallery.html">
+      <span class="n-text"><small>Next chapter</small><strong>The vault</strong></span>
+      <span class="n-go" style="background:var(--sky-d)"><svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+    </a>
+  </section>
+  <p class="footer-note"><a href="home.html#wishes">Back to the celebration</a></p>
+
+<script src="assets/app.js"></script>
+<script>
+(function(){
+  App.floaters(App.$('#hearts'), { count: 16, seed: 13, shapes: ['heart', 'dot', 'heart', 'star', 'ring'], colors: ['#FFFFFF', '#FFD6E7', '#FFE27A', '#FFFFFF', '#C9B6FF'] });
+  window.addEventListener('load', () => setTimeout(() => App.confetti.burst(innerWidth / 2, innerHeight * .35, 120, ['#FFFFFF', '#FFD6E7', '#FFE27A', '#B08CFF', '#FF7AB0']), 700));
+})();
+</script>
+</body>
+</html>
