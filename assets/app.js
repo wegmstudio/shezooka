@@ -318,12 +318,19 @@
     }
     function fit(){
       const sw = stage.clientWidth - 24, sh = stage.clientHeight - 8;
-      let w = sw, h = w / ratio; if (h > sh){ h = sh; w = h * ratio; }
-      vid.style.width = Math.floor(w) + 'px'; vid.style.height = Math.floor(h) + 'px';
+      const flip = el.hasAttribute('data-flip');
+      // For rotated (portrait) videos, the visual frame is the inverse of the native ratio
+      let r = flip ? (1 / ratio) : ratio;
+      let w = sw, h = w / r; if (h > sh){ h = sh; w = h * r; }
+      vid.style.width = Math.floor(w) + 'px';
+      vid.style.height = Math.floor(h) + 'px';
+      vid.style.transform = flip ? 'rotate(90deg)' : '';
     }
     function show(i){
       pos = (i + list.length) % list.length;
-      const t = list[pos]; ratio = parseFloat(t.dataset.ratio) || 16 / 9;
+      const t = list[pos];
+      el.toggleAttribute('data-flip', t.classList.contains('flip'));
+      ratio = parseFloat(t.dataset.ratio) || 16 / 9;
       vid.src = t.dataset.video; fit(); vid.play().catch(() => {});
       $('.ov-title', el).textContent = t.dataset.title || '';
       $('.ov-count', el).textContent = (pos + 1) + ' of ' + list.length;
