@@ -324,7 +324,7 @@
       let w = sw, h = w / r; if (h > sh){ h = sh; w = h * r; }
       vid.style.width = Math.floor(w) + 'px';
       vid.style.height = Math.floor(h) + 'px';
-      vid.style.transform = flip ? 'rotate(90deg)' : '';
+      vid.style.transform = flip ? 'rotate(-90deg)' : '';
     }
     function show(i){
       pos = (i + list.length) % list.length;

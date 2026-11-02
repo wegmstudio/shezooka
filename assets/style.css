@@ -129,17 +129,17 @@ button.photo{appearance:none;border:0;padding:0;cursor:zoom-in;display:block;wid
 
 /* rotated (portrait) videos that display sideways in the player */
 .vtile.flip{aspect-ratio:auto}
-.vtile.flip video{transform:rotate(90deg) scale(1.28)}
+.vtile.flip video{transform:rotate(-90deg) scale(1.28)}
 .vtile.flip .shade{z-index:1}
 /* film tiles */
 .vtile.film.flip{aspect-ratio:auto;height:clamp(360px,62vw,560px)}
-.vtile.film.flip video{transform:rotate(90deg) scale(1.75)}
+.vtile.film.flip video{transform:rotate(-90deg) scale(1.75)}
 /* screening-room tiles */
 #screenGrid .vtile.flip{aspect-ratio:auto;height:420px}
-#screenGrid .vtile.flip video{transform:rotate(90deg) scale(1.55)}
+#screenGrid .vtile.flip video{transform:rotate(-90deg) scale(1.55)}
 /* modal overlay — apply the same rotation to any video that came from a flip tile */
-.vmodal[data-flip="1"] .ov-stage video{transform:rotate(90deg)}
-.vmodal.open[data-flip="1"] .ov-stage video{transform:rotate(90deg)}
+.vmodal[data-flip="1"] .ov-stage video{transform:rotate(-90deg)}
+.vmodal.open[data-flip="1"] .ov-stage video{transform:rotate(-90deg)}
 
 /* ---------- video player overlay ---------- */
 .vmodal,.lightbox{position:fixed;inset:0;z-index:80;display:grid;grid-template-rows:auto minmax(0,1fr) auto;background:#1A0826;padding:var(--safe-t) 0 var(--safe-b);opacity:0;visibility:hidden;transition:opacity .28s ease,visibility 0s .28s}
